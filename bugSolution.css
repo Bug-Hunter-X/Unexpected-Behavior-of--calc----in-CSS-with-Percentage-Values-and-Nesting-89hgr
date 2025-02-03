@@ -1,0 +1,27 @@
+To solve the issues with `calc()` and percentages, ensure that the percentage is calculated based on the desired context.
+
+For the nested `div` example, one solution could be to calculate the width relative to the overall container:
+
+```css
+body {
+  width: 100%; /* or define a width as needed */
+}
+div {
+  width: 50%;
+}
+div div {
+  width: calc(50% - 20px); /* Now calculates 20px from the 50% of parent*/
+}
+```
+
+Alternatively, use absolute units or viewport units (vw, vh) instead of percentages in the `calc()` function if needed to avoid these calculation issues.
+
+Always use correct spacing and parenthesis in the `calc` function to avoid order of operations errors.  Avoid relying on nested percentage values within calc function if possible.
+
+For correct order of operations use parenthesis correctly: 
+```css
+div {
+    width: calc(50% + (20px / 2)); /*Correct*/
+    width: calc((50% + 20px) / 2); /*Correct */
+}
+```
