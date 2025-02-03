@@ -1,0 +1,29 @@
+The CSS property `calc()` is used to perform calculations within CSS. However, there are some edge cases that can lead to unexpected results or errors. One such case involves using `calc()` with percentage values, especially when dealing with nested elements or relative units.
+
+For example, consider the following CSS:
+
+```css
+div {
+  width: 50%;
+}
+div div {
+  width: calc(100% - 20px);
+}
+```
+
+Here, the inner `div` has a width of `calc(100% - 20px)`. This seems straightforward: it should take the 100% width of its parent and subtract 20 pixels. However, the 100% value in this context is relative to the parent div, which has a width of 50% of its container.  Therefore, the calculation is performed on 50% (of the parent element), leading to an unexpected width of less than expected.
+
+Another common error happens with incorrect spacing around the operators: 
+```css
+width:calc(100% - 20 px); /* Incorrect, this will be parsed as 100% - 20px which is invalid */
+width: calc(100%-20px); /* Incorrect, need spaces around the operators*/ 
+width:calc( 100% - 20px ); /* Correct usage of calc() */
+```
+
+Incorrect nesting can also be a source of errors. Missing parenthesis can lead to unexpected results, resulting in inaccurate layout:
+```css
+div {
+    width: calc(50% + (20px/2)); /*Correct*/
+    width: calc(50% + 20px /2); /* Incorrect, order of operations will be incorrect*/
+}
+```
