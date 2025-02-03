@@ -1,0 +1,1 @@
+This repository demonstrates some uncommon errors related to the CSS `calc()` function, specifically when dealing with percentages and nesting. The `bug.css` file contains examples of code that produces unexpected results. The `bugSolution.css` file shows how to correct these issues and achieve the desired layout.
